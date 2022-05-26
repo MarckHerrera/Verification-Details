@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+import VDetalles from './components/VerificationDetails/VDetails'
 import './App.css';
 import {
   Routes,
@@ -79,7 +78,7 @@ import {useState} from 'react';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      
+      <VDetalles></VDetalles>
     </ThemeProvider>
   );
 }
