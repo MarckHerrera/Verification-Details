@@ -6,76 +6,98 @@ import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
-function Copyright(props: any) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://traeguate.gt/">
-                Traeguate
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-/**
- * Función de Login usando useState()
- * ERROR AQUI EN LA LINEA 26, AVERIGUAR COMO PASAR UNA FUNCION COMO PARAMETRO EN TYPESCRIPT
- */
+
 const VDetalles = () => {
-    
+
     return (
         <React.StrictMode>
-            <Container component="main" maxWidth="xs">
+            <Container component="main" maxWidth="xl">
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: '20vh',
+                        marginTop: '10vh',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}
                 >
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ width: 56, height: 56 }} />
+                    <br />
                     <Typography component="h1" variant="h5" sx={{ color: '#464E47' }}>
-                        Administración
+                        Nombre de Usuario
                     </Typography>
-                    <Box component="form" /* onSubmit={enviarDatos}  */noValidate sx={{ mt: 1 }}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="user"
-                            label="Usuario"
-                            name="user"
-                            /* onChange={handleInputChange} */
-                            autoFocus
-                        />
+                    <Typography component="h1" variant="h6" sx={{ color: '#879488' }}>
+                        Documento de identificación
+                    </Typography>
+
+                    <ImageList  cols={5} rowHeight={200}>
+                        {itemData.map((item) => (
+                            <ImageListItem key={item.img}>
+                                <img
+                                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                    alt={item.title}
+                                    loading="lazy"
+                                />
+                            </ImageListItem>
+                        ))}
+                    </ImageList>
+                    <hr/>
+
+                    <Box component="form"  sx={{ mt: 1, }}>
+                    <TextField id="outlined-basic" label="Deja un mensaje al conductor (Opcional)" variant="outlined" fullWidth margin="normal"/>
+
                         <TextField
                             margin="normal"
                             required
                             fullWidth
                             name="password"
                             label="Contraseña"
-                            type="password"
+                            type="text"
                             id="password"
                             /* onChange={handleInputChange} */
                             autoComplete="current-password"
                         />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2, pt: 1, pb: 1, boxShadow: 5 }}
-                        >
-                            Ingresar
-                        </Button>
+                        <ButtonGroup size="large" variant="outlined" aria-label="large button group" fullWidth >
+                            <Button>Denegar</Button>
+                            <Button variant="contained">Aprobar</Button>
+                        </ButtonGroup>
+                        
                     </Box>
                 </Box>
-                <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
         </React.StrictMode>
     );
 }
+
+
+const itemData = [
+    {
+        img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+        title: 'Breakfast',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+        title: 'Burger',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+        title: 'Camera',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
+        title: 'Coffee',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
+        title: 'Hats',
+    },
+
+];
 
 export default VDetalles;
