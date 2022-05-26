@@ -78,7 +78,7 @@ import {useState} from 'react';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <VDetalles></VDetalles>
+      <VDetalles/>
     </ThemeProvider>
   );
 }
