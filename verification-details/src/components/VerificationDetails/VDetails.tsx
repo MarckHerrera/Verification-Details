@@ -11,6 +11,8 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 
 const VDetalles = () => {
@@ -38,7 +40,7 @@ const VDetalles = () => {
 
                     <ImageList cols={5} rowHeight={210}>
                         {itemData.map((item) => (
-                            <ImageListItem key={item.img} sx={{alignItems: 'center'}}>
+                            <ImageListItem key={item.img} sx={{ alignItems: 'center' }}>
                                 <img
                                     src={`${item.img}?w=160&h=160&fit=crop&auto=format`}
                                     srcSet={`${item.img}?w=160&h=160&fit=crop&auto=format&dpr=2 2px`}
@@ -48,15 +50,15 @@ const VDetalles = () => {
                                 <ImageListItemBar
                                     title={item.title}
                                     position="below"
-                                    
+
                                 />
                             </ImageListItem>
                         ))}
                     </ImageList>
-                    <hr/>
+                    <hr />
 
-                    <Box component="form"  sx={{ mt: 1, }}>
-                    <TextField id="outlined-basic" label="Deja un mensaje al conductor (Opcional)" variant="outlined" fullWidth margin="normal"/>
+                    <Box component="form" sx={{ mt: 1, }}>
+                        <TextField id="outlined-basic" label="Deja un mensaje al conductor (Opcional)" variant="outlined" fullWidth margin="normal" />
 
                         <TextField
                             margin="normal"
@@ -70,10 +72,10 @@ const VDetalles = () => {
                             autoComplete="current-password"
                         />
                         <ButtonGroup size="large" variant="outlined" aria-label="large button group" fullWidth >
-                            <Button>Denegar</Button>
-                            <Button variant="contained">Aprobar</Button>
+                            <Button endIcon={<HighlightOffIcon />}>Denegar</Button>
+                            <Button endIcon={<CheckCircleOutlineIcon />} variant="contained" >Aprobar</Button>
                         </ButtonGroup>
-                        
+
                     </Box>
                 </Box>
             </Container>
