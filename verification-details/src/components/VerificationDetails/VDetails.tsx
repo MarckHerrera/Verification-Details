@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
 
@@ -35,14 +36,19 @@ const VDetalles = () => {
                         Documento de identificación
                     </Typography>
 
-                    <ImageList  cols={5} rowHeight={200}>
+                    <ImageList cols={5} rowHeight={210}>
                         {itemData.map((item) => (
-                            <ImageListItem key={item.img}>
+                            <ImageListItem key={item.img} sx={{alignItems: 'center'}}>
                                 <img
-                                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                    src={`${item.img}?w=160&h=160&fit=crop&auto=format`}
+                                    srcSet={`${item.img}?w=160&h=160&fit=crop&auto=format&dpr=2 2px`}
                                     alt={item.title}
                                     loading="lazy"
+                                />
+                                <ImageListItemBar
+                                    title={item.title}
+                                    position="below"
+                                    
                                 />
                             </ImageListItem>
                         ))}
