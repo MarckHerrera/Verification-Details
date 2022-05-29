@@ -11,13 +11,16 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import Grid from '@mui/material/Grid';
 
 
 const VDetalles = () => {
 
     return (
         <React.StrictMode>
-            <Container component="main" maxWidth="xl">
+            <Container component="main">
                 <CssBaseline />
                 <Box
                     sx={{
@@ -55,25 +58,21 @@ const VDetalles = () => {
                     </ImageList>
                     <hr/>
 
-                    <Box component="form"  sx={{ mt: 1, }}>
-                    <TextField id="outlined-basic" label="Deja un mensaje al conductor (Opcional)" variant="outlined" fullWidth margin="normal"/>
+                    <Box component="form" sx={{width: '100%'}}>
+                    
+                        <Grid container spacing={2} justifyContent="center">
+                        <Grid item xs={12} md={8}>
 
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Contraseña"
-                            type="text"
-                            id="password"
-                            /* onChange={handleInputChange} */
-                            autoComplete="current-password"
-                        />
-                        <ButtonGroup size="large" variant="outlined" aria-label="large button group" fullWidth >
-                            <Button>Denegar</Button>
-                            <Button variant="contained">Aprobar</Button>
-                        </ButtonGroup>
+                        <TextField id="outlined-basic" label="Deja un mensaje al conductor (Opcional)" variant="outlined" fullWidth margin="normal" />
+                        </Grid>
                         
+                        <Grid item xs={12} md={8}>
+                            <ButtonGroup size="large" variant="outlined" aria-label="large button group" fullWidth >
+                                <Button endIcon={<HighlightOffIcon />}>Denegar</Button>
+                                <Button endIcon={<CheckCircleOutlineIcon />} variant="contained" type='submit'>Aprobar</Button>
+                            </ButtonGroup>
+                            </Grid>
+                        </Grid>
                     </Box>
                 </Box>
             </Container>
