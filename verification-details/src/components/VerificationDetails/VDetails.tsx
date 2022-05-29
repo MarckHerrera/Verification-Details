@@ -16,6 +16,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Grid from '@mui/material/Grid';
 
 
+
 const VDetalles = () => {
 
     return (
@@ -41,7 +42,7 @@ const VDetalles = () => {
 
                     <ImageList cols={5} rowHeight={210}>
                         {itemData.map((item) => (
-                            <ImageListItem key={item.img} sx={{alignItems: 'center'}}>
+                            <ImageListItem key={item.img} sx={{ alignItems: 'center' }}>
                                 <img
                                     src={`${item.img}?w=160&h=160&fit=crop&auto=format`}
                                     srcSet={`${item.img}?w=160&h=160&fit=crop&auto=format&dpr=2 2px`}
@@ -51,12 +52,13 @@ const VDetalles = () => {
                                 <ImageListItemBar
                                     title={item.title}
                                     position="below"
-                                    
+
                                 />
                             </ImageListItem>
                         ))}
                     </ImageList>
-                    <hr/>
+                    <hr />
+
 
                     <Box component="form" sx={{width: '100%'}}>
                     
@@ -73,6 +75,7 @@ const VDetalles = () => {
                             </ButtonGroup>
                             </Grid>
                         </Grid>
+
                     </Box>
                 </Box>
             </Container>
