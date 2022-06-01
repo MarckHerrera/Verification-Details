@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -18,6 +18,34 @@ import Grid from '@mui/material/Grid';
 
 
 const VDetalles = () => {
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        let comentarioOp = {
+            coment: data.get('coment'),
+        }
+        console.log(comentarioOp);
+    
+    
+    
+      };
+
+      const verificationData  = async () => {
+        const res: any = await fetch('https://jsonplaceholder.typicode.com/users?username=Bret', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        const resUser: any = await res.json();
+        console.log(resUser);
+      }
+      useEffect(() => {
+        verificationData();
+      }, [])
+      
 
     return (
         <React.StrictMode>
@@ -60,17 +88,17 @@ const VDetalles = () => {
                     <hr />
 
 
-                    <Box component="form" sx={{width: '100%'}}>
+                    <Box component="form" sx={{width: '100%'}}  onSubmit={handleSubmit}>
                     
                         <Grid container spacing={2} justifyContent="center">
                         <Grid item xs={12} md={8}>
 
-                        <TextField id="outlined-basic" label="Deja un mensaje al conductor (Opcional)" variant="outlined" fullWidth margin="normal" />
+                        <TextField id="outlined-basic" label="Deja un mensaje al conductor (Opcional)" variant="outlined" fullWidth margin="normal" name="coment"/>
                         </Grid>
                         
                         <Grid item xs={12} md={8}>
                             <ButtonGroup size="large" variant="outlined" aria-label="large button group" fullWidth >
-                                <Button endIcon={<HighlightOffIcon />}>Denegar</Button>
+                                <Button endIcon={<HighlightOffIcon />}  type="submit">Denegar</Button>
                                 <Button endIcon={<CheckCircleOutlineIcon />} variant="contained" type='submit'>Aprobar</Button>
                             </ButtonGroup>
                             </Grid>
@@ -81,7 +109,11 @@ const VDetalles = () => {
             </Container>
         </React.StrictMode>
     );
+
+    
 }
+
+
 
 
 const itemData = [
@@ -107,5 +139,8 @@ const itemData = [
     },
 
 ];
+
+
+
 
 export default VDetalles;
