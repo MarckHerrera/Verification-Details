@@ -14,6 +14,12 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Grid from '@mui/material/Grid';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { CardMedia } from '@mui/material';
+import Cart from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 
 
@@ -27,12 +33,12 @@ const VDetalles = () => {
             coment: data.get('coment'),
         }
         console.log(comentarioOp);
-    
-    
-    
-      };
 
-      const verificationData  = async () => {
+
+
+    };
+
+    const verificationData = async () => {
         const res: any = await fetch('https://jsonplaceholder.typicode.com/users?username=Bret', {
             method: 'GET',
             headers: {
@@ -41,12 +47,45 @@ const VDetalles = () => {
         });
         const resUser: any = await res.json();
         console.log(resUser);
-      }
-      useEffect(() => {
+    }
+    useEffect(() => {
         verificationData();
-      }, [])
-      
+    }, []);
 
+    var settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: false,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    }
     return (
         <React.StrictMode>
             <Container component="main">
@@ -68,39 +107,50 @@ const VDetalles = () => {
                         Documento de identificación
                     </Typography>
 
-                    <ImageList cols={5} rowHeight={210}>
-                        {itemData.map((item) => (
-                            <ImageListItem key={item.img} sx={{ alignItems: 'center' }}>
-                                <img
-                                    src={`${item.img}?w=160&h=160&fit=crop&auto=format`}
-                                    srcSet={`${item.img}?w=160&h=160&fit=crop&auto=format&dpr=2 2px`}
-                                    alt={item.title}
-                                    loading="lazy"
-                                />
-                                <ImageListItemBar
-                                    title={item.title}
-                                    position="below"
-
-                                />
-                            </ImageListItem>
-                        ))}
-                    </ImageList>
+                    <Box sx={{
+                        width: '63%',
+                        margin: 2
+                    }}>
+                        <Grid container columnSpacing={{ xs: 1, sm:0, md:0 }} justifyContent="center">
+                            <Grid item xs={8} md={8}>
+                                <Slider {...settings}>
+                                    {itemData.map((item) => (
+                                        <Cart sx={{
+                                            maxWidth: 153,
+                                            marginBottom: '1rem'
+                                        }}>
+                                            <CardMedia
+                                                component="img"
+                                                image={item.img}
+                                            >
+                                            </CardMedia>
+                                            <CardContent>
+                                                <Typography variant="body2" sx={{ textAlign: 'center' }}>
+                                                    {item.title}
+                                                </Typography>
+                                            </CardContent>
+                                        </Cart>
+                                    ))}
+                                </Slider>
+                            </Grid>
+                        </Grid>
+                    </Box>
                     <hr />
 
 
-                    <Box component="form" sx={{width: '100%'}}  onSubmit={handleSubmit}>
-                    
-                        <Grid container spacing={2} justifyContent="center">
-                        <Grid item xs={12} md={8}>
+                    <Box component="form" sx={{ width: '100%' }} onSubmit={handleSubmit}>
 
-                        <TextField id="outlined-basic" label="Deja un mensaje al conductor (Opcional)" variant="outlined" fullWidth margin="normal" name="coment"/>
-                        </Grid>
-                        
-                        <Grid item xs={12} md={8}>
-                            <ButtonGroup size="large" variant="outlined" aria-label="large button group" fullWidth >
-                                <Button endIcon={<HighlightOffIcon />}  type="submit">Denegar</Button>
-                                <Button endIcon={<CheckCircleOutlineIcon />} variant="contained" type='submit'>Aprobar</Button>
-                            </ButtonGroup>
+                        <Grid container spacing={2} justifyContent="center">
+                            <Grid item xs={12} md={8}>
+
+                                <TextField id="outlined-basic" label="Deja un mensaje al conductor (Opcional)" variant="outlined" fullWidth margin="normal" name="coment" />
+                            </Grid>
+
+                            <Grid item xs={12} md={8}>
+                                <ButtonGroup size="large" variant="outlined" aria-label="large button group" fullWidth >
+                                    <Button endIcon={<HighlightOffIcon />} type="submit">Denegar</Button>
+                                    <Button endIcon={<CheckCircleOutlineIcon />} variant="contained" type='submit'>Aprobar</Button>
+                                </ButtonGroup>
                             </Grid>
                         </Grid>
 
@@ -110,7 +160,7 @@ const VDetalles = () => {
         </React.StrictMode>
     );
 
-    
+
 }
 
 
