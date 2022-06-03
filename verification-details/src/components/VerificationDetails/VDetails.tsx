@@ -25,7 +25,7 @@ import { UserProps } from '../Interfaces/UserProps';
 
 
 
-const VDetalles = ({userData}:UserProps) => {
+const VDetalles = ({ userData }: UserProps) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
@@ -105,7 +105,7 @@ const VDetalles = ({userData}:UserProps) => {
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ width: 56, height: 56 }} />
                     <br />
                     <Typography component="h1" variant="h5" sx={{ color: '#464E47' }}>
-                    {userData.userName}
+                        {userData.userName}
                     </Typography>
                     <Typography component="h1" variant="h6" sx={{ color: '#879488' }}>
                         Documento de identificación
@@ -115,8 +115,8 @@ const VDetalles = ({userData}:UserProps) => {
                         width: '63%',
                         margin: 2
                     }}>
-                        <Grid container columnSpacing={{ xs: 1, sm:0, md:0 }} justifyContent="center">
-                            <Grid item xs={8} md={8} sx={{paddingRight: "8px"}}>
+                        <Grid container columnSpacing={{ xs: 1, sm: 0, md: 0 }} justifyContent="center">
+                            <Grid item xs={8} md={8} sx={{ paddingRight: "8px" }}>
                                 <Slider {...settings}>
                                     {itemData.map((item) => (
                                         <Cart sx={{
@@ -153,7 +153,7 @@ const VDetalles = ({userData}:UserProps) => {
                             <Grid item xs={12} md={8}>
                                 <ButtonGroup size="large" variant="outlined" aria-label="large button group" fullWidth >
                                     <Button endIcon={<HighlightOffIcon />} type="submit">Denegar</Button>
-                                    <Button endIcon={<CheckCircleOutlineIcon />} variant="contained" type='submit'>Aprobar</Button>
+                                    <Button endIcon={<CheckCircleOutlineIcon />} disableElevation variant="contained" type='submit'>Aprobar</Button>
                                 </ButtonGroup>
                             </Grid>
                         </Grid>
