@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import {useState} from 'react';
+import { UserData } from './components/Interfaces/UserProps';
 /**
  * Paleta de Colores
  * https://coolors.co/f1fffa-ccfccb-96e6b3-03b1bb-258db0-464e47
@@ -76,9 +77,14 @@ import {useState} from 'react';
 });
 
 function App() {
+
+  const [userData, setUserData] = useState<UserData>({
+    userName: 'Antonette'
+  })
+
   return (
     <ThemeProvider theme={theme}>
-      <VDetalles/>
+      <VDetalles userData={userData} setUserData={setUserData} />
     </ThemeProvider>
   );
 }
