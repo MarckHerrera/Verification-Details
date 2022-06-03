@@ -20,10 +20,12 @@ import "slick-carousel/slick/slick-theme.css";
 import { CardMedia } from '@mui/material';
 import Cart from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { UserProps } from '../Interfaces/UserProps';
 
 
 
-const VDetalles = () => {
+
+const VDetalles = ({userData}:UserProps) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
@@ -39,7 +41,7 @@ const VDetalles = () => {
     };
 
     const verificationData = async () => {
-        const res: any = await fetch('https://jsonplaceholder.typicode.com/users?username=Bret', {
+        const res: any = await fetch('https://jsonplaceholder.typicode.com/users?username=' + userData.userName, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,6 +53,8 @@ const VDetalles = () => {
     useEffect(() => {
         verificationData();
     }, []);
+
+
 
     var settings = {
         dots: true,
@@ -101,7 +105,7 @@ const VDetalles = () => {
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ width: 56, height: 56 }} />
                     <br />
                     <Typography component="h1" variant="h5" sx={{ color: '#464E47' }}>
-                        Nombre de Usuario
+                    {userData.userName}
                     </Typography>
                     <Typography component="h1" variant="h6" sx={{ color: '#879488' }}>
                         Documento de identificación
@@ -112,7 +116,7 @@ const VDetalles = () => {
                         margin: 2
                     }}>
                         <Grid container columnSpacing={{ xs: 1, sm:0, md:0 }} justifyContent="center">
-                            <Grid item xs={8} md={8}>
+                            <Grid item xs={8} md={8} sx={{paddingRight: "8px"}}>
                                 <Slider {...settings}>
                                     {itemData.map((item) => (
                                         <Cart sx={{
